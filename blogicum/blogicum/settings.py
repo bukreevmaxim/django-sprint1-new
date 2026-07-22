@@ -58,7 +58,6 @@ MIDDLEWARE = [
 TEMPLATES_DIR = BASE_DIR / 'templates'
 
 
-
 ROOT_URLCONF = 'blogicum.urls'
 
 TEMPLATES = [

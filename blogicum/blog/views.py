@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
 
-# Список постов
 posts = [
     {
         'id': 0,
@@ -47,24 +46,15 @@ posts = [
 
 
 def index(request):
-    """Главная страница блога"""
     template = 'blog/index.html'
-    
-    # Переворачиваем список для обратного порядка
     reversed_posts = posts[::-1]
-    
-    # Ключ 'posts' (множественное число) - для списка постов
-    context = {
-        'posts': reversed_posts,
-    }
+    context = {'posts': reversed_posts}
     return render(request, template, context)
 
 
 def post_detail(request, id):
-    """Страница отдельного поста"""
     template = 'blog/detail.html'
     
-    # Ищем пост по id
     post = None
     for p in posts:
         if p['id'] == id:
@@ -74,19 +64,11 @@ def post_detail(request, id):
     if post is None:
         raise Http404(f'Пост с id={id} не найден')
     
-    # Ключ 'post' (единственное число) - для одного поста
-    context = {
-        'post': post,  # ✅ Правильный ключ для автотестов
-    }
+    context = {'post': post}
     return render(request, template, context)
 
 
 def category_posts(request, category_slug):
-    """Страница категории постов"""
     template = 'blog/category.html'
-    
-    # Ключ 'category_slug' - для отображения категории
-    context = {
-        'category_slug': category_slug,
-    }
+    context = {'category_slug': category_slug}
     return render(request, template, context)
