@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATIC_URL = '/static/'
+
 # Путь к статическим файлам на уровне проекта
 STATICFILES_DIRS = [
     BASE_DIR / 'static',

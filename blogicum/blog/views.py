@@ -54,16 +54,16 @@ def index(request):
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    
+
     post = None
     for p in posts:
         if p['id'] == id:
             post = p
             break
-    
+
     if post is None:
         raise Http404(f'Пост с id={id} не найден')
-    
+
     context = {'post': post}
     return render(request, template, context)
 
